@@ -13,17 +13,21 @@ PAGEID = pageid
 PAYLOAD = {'some': 'data'}
 
 def main():
-# create logger
-    logging.basicConfig(filename='page_update.log', format='%(asctime)s %(message)s', level=logging.INFO)
+	
+# create logger, set log file and log level, log format
+    logging.basicConfig(filename='page_update.log', level=logging.INFO, format='%(asctime)s %(message)s')
     logging.info('Started')
+
 # ask username and password
     username = raw_input('login: ')
     passwd = getpass.getpass()
+
 #build url
     url = "{base}/{pageid}".format(
         base = BASE_URL, pageid = str(PAGEID))
 
     logging.info('Updating page PAGEID')
+
 #Now, let's try to put a webpage.  
     r = requests.put(
         url,
@@ -34,7 +38,7 @@ def main():
             'Accept' : 'application/json'
             }
     )
-	print(response.json())
+    print(response.json())
     logging.info('Finished')
     r.raise_for_status()
 
