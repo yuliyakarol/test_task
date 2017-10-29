@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# #Begin by importing modules
+# Begin by importing modules
 
 import sys
 import getpass
